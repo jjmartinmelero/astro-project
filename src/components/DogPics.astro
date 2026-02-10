@@ -1,0 +1,17 @@
+---
+
+interface Props {
+    urls: string[];
+}
+
+const {urls} = Astro.props;
+
+---
+
+<div>
+    {
+        urls.map((dogImageURL: string) => (
+            <img src={dogImageURL} alt="Dog" style="max-width: 400px; height: auto;" />
+        ))			
+    }
+</div>

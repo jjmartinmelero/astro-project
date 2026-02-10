@@ -1,10 +1,11 @@
 ---
+import DogPics from "../components/DogPics.astro";
 
 const title = "Hello world";
 const imageError = "https://www.hostingplus.pe/wp-content/uploads/2020/02/error.jpg";
-const res = await fetch("https://dog.ceo/api/breeds/image/random");
+const res = await fetch("https://dog.ceo/api/breeds/image/random/5");
 const data = await res.json();
-const dogImageURL = data.message ?? imageError;
+const dogImageURLs = data.message ?? [imageError];
 
 ---
 
@@ -19,7 +20,7 @@ const dogImageURL = data.message ?? imageError;
 	</head>
 	<body>
 		<h1>{title}</h1>
-		<img src={dogImageURL} alt="Dog" style="max-width: 400px; height: auto;" />
+		<DogPics urls={dogImageURLs} />
 		<div>
 			<button id="cat-image-button">Get cat image</button>
 		</div>
