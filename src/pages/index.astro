@@ -1,5 +1,11 @@
 ---
 
+const title = "Hello world";
+const imageError = "https://www.hostingplus.pe/wp-content/uploads/2020/02/error.jpg";
+const res = await fetch("https://dog.ceo/api/breeds/image/random");
+const data = await res.json();
+const dogImageURL = data.message ?? imageError;
+
 ---
 
 <html lang="en">
@@ -12,6 +18,19 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>{title}</h1>
+		<img src={dogImageURL} alt="Dog" style="max-width: 400px; height: auto;" />
+		<div>
+			<button id="cat-image-button">Get cat image</button>
+		</div>
+		<div>
+			<img id="cat-image" src="" alt="" style="max-width: 400px; height: auto;" />
+		</div>
 	</body>
 </html>
+
+<script>
+	import { setupCatFactButton } from "./cat";
+
+	setupCatFactButton();
+</script>
