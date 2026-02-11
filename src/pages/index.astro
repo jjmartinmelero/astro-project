@@ -1,5 +1,7 @@
 ---
 import DogPics from "../components/DogPics.astro";
+import "../styles.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Hello world";
 const imageError = "https://www.hostingplus.pe/wp-content/uploads/2020/02/error.jpg";
@@ -9,26 +11,17 @@ const dogImageURLs = data.message ?? [imageError];
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>{title}</h1>
-		<DogPics urls={dogImageURLs} />
-		<div>
-			<button id="cat-image-button">Get cat image</button>
-		</div>
-		<div>
-			<img id="cat-image" src="" alt="" style="max-width: 400px; height: auto;" />
-		</div>
-	</body>
-</html>
+<BaseLayout title="Home">
+	<h1>{title}</h1>
+	<DogPics urls={dogImageURLs} />
+	<div>
+		<button id="cat-image-button">Get cat image</button>
+	</div>
+	<div>
+		<img id="cat-image" src="" alt="" style="max-width: 400px; height: auto;" />
+	</div>
+	<a href="/about">About</a>
+</BaseLayout>
 
 <script>
 	import { setupCatFactButton } from "./cat";
